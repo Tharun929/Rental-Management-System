@@ -53,57 +53,58 @@ class BookRental {
 
         while (option != 5) {
 
-            System.out.println("==========================================");
-            System.out.println("  |          BOOK RENTAL SYSTEM            |");
-            System.out.println("  ==========================================");
-            System.out.println("       _______   _______   _______");
+            System.out.println(ColorUtils.header("=========================================="));
+            System.out.println(ColorUtils.header("  |          BOOK RENTAL SYSTEM            |"));
+            System.out.println(ColorUtils.header("  =========================================="));
+            System.out.println(ColorUtils.BRIGHT_MAGENTA + "       _______   _______   _______");
             System.out.println("      |       | |       | |       |");
             System.out.println("      | BOOK  | | BOOK  | | BOOK  |");
-            System.out.println("      |_______| |_______| |_______|");
+            System.out.println("      |_______| |_______| |_______|" + ColorUtils.RESET);
             System.out.println();
-            System.out.println("1. View Books");
-            System.out.println("1. View Books");
-            System.out.println("2. Rent Book");
-            System.out.println("3. Return Book");
-            System.out.println("4. View My Books");
-            System.out.println("5. Exit");
+            System.out.println(ColorUtils.BRIGHT_BLUE + "1." + ColorUtils.RESET + " View Books");
+            System.out.println(ColorUtils.BRIGHT_BLUE + "2." + ColorUtils.RESET + " Rent Book");
+            System.out.println(ColorUtils.BRIGHT_BLUE + "3." + ColorUtils.RESET + " Return Book");
+            System.out.println(ColorUtils.BRIGHT_BLUE + "4." + ColorUtils.RESET + " View My Books");
+            System.out.println(ColorUtils.BRIGHT_BLUE + "5." + ColorUtils.RESET + " Exit");
 
+            System.out.print(ColorUtils.BRIGHT_YELLOW + "Enter Choice: " + ColorUtils.RESET);
             option = sc.nextInt();
 
             //===== VIEW =====
             if (option == 1) {
 
-                System.out.println("\n--- Horror ---");
-                System.out.println("1. Ghost House (10/day) - Available: " + (booked[0] ? "No ❌" : "Yes ✓"));
-                System.out.println("2. Dark Night (12/day) - Available: " + (booked[1] ? "No ❌" : "Yes ✓"));
+                System.out.println(ColorUtils.header("\n--- Horror ---"));
+                System.out.println(ColorUtils.BRIGHT_BLUE + "1." + ColorUtils.RESET + " Ghost House (10/day) - Available: " + (booked[0] ? ColorUtils.error("No ❌") : ColorUtils.success("Yes ✓")));
+                System.out.println(ColorUtils.BRIGHT_BLUE + "2." + ColorUtils.RESET + " Dark Night (12/day) - Available: " + (booked[1] ? ColorUtils.error("No ❌") : ColorUtils.success("Yes ✓")));
 
-                System.out.println("\n--- Love Stories ---");
-                System.out.println("3. Love Forever (8/day) - Available: " + (booked[2] ? "No ❌" : "Yes ✓"));
-                System.out.println("4. Heart Beats (9/day) - Available: " + (booked[3] ? "No ❌" : "Yes ✓"));
+                System.out.println(ColorUtils.header("\n--- Love Stories ---"));
+                System.out.println(ColorUtils.BRIGHT_BLUE + "3." + ColorUtils.RESET + " Love Forever (8/day) - Available: " + (booked[2] ? ColorUtils.error("No ❌") : ColorUtils.success("Yes ✓")));
+                System.out.println(ColorUtils.BRIGHT_BLUE + "4." + ColorUtils.RESET + " Heart Beats (9/day) - Available: " + (booked[3] ? ColorUtils.error("No ❌") : ColorUtils.success("Yes ✓")));
 
-                System.out.println("\n--- Thriller ---");
-                System.out.println("5. Mystery Night (12/day) - Available: " + (booked[4] ? "No ❌" : "Yes ✓"));
-                System.out.println("6. Secret Case (15/day) - Available: " + (booked[5] ? "No ❌" : "Yes ✓"));
+                System.out.println(ColorUtils.header("\n--- Thriller ---"));
+                System.out.println(ColorUtils.BRIGHT_BLUE + "5." + ColorUtils.RESET + " Mystery Night (12/day) - Available: " + (booked[4] ? ColorUtils.error("No ❌") : ColorUtils.success("Yes ✓")));
+                System.out.println(ColorUtils.BRIGHT_BLUE + "6." + ColorUtils.RESET + " Secret Case (15/day) - Available: " + (booked[5] ? ColorUtils.error("No ❌") : ColorUtils.success("Yes ✓")));
 
-                System.out.println("\n--- Educational ---");
-                System.out.println("7. Java Basics (7/day) - Available: " + (booked[6] ? "No ❌" : "Yes ✓"));
-                System.out.println("8. Data Structures (10/day) - Available: " + (booked[7] ? "No ❌" : "Yes ✓"));
+                System.out.println(ColorUtils.header("\n--- Educational ---"));
+                System.out.println(ColorUtils.BRIGHT_BLUE + "7." + ColorUtils.RESET + " Java Basics (7/day) - Available: " + (booked[6] ? ColorUtils.error("No ❌") : ColorUtils.success("Yes ✓")));
+                System.out.println(ColorUtils.BRIGHT_BLUE + "8." + ColorUtils.RESET + " Data Structures (10/day) - Available: " + (booked[7] ? ColorUtils.error("No ❌") : ColorUtils.success("Yes ✓")));
 
-                System.out.println("\n--- Cartoon ---");
-                System.out.println("9. Tom & Jerry (5/day) - Available: " + (booked[8] ? "No ❌" : "Yes ✓"));
-                System.out.println("10. Doraemon (6/day) - Available: " + (booked[9] ? "No ❌" : "Yes ✓"));
+                System.out.println(ColorUtils.header("\n--- Cartoon ---"));
+                System.out.println(ColorUtils.BRIGHT_BLUE + "9." + ColorUtils.RESET + " Tom & Jerry (5/day) - Available: " + (booked[8] ? ColorUtils.error("No ❌") : ColorUtils.success("Yes ✓")));
+                System.out.println(ColorUtils.BRIGHT_BLUE + "10." + ColorUtils.RESET + " Doraemon (6/day) - Available: " + (booked[9] ? ColorUtils.error("No ❌") : ColorUtils.success("Yes ✓")));
             }
 
             // ===== RENT =====
             else if (option == 2) {
 
-                System.out.println("\nSelect Category:");
-                System.out.println("1. Horror");
-                System.out.println("2. Love Stories");
-                System.out.println("3. Thriller");
-                System.out.println("4. Educational");
-                System.out.println("5. Cartoon");
+                System.out.println(ColorUtils.info("\nSelect Category:"));
+                System.out.println(ColorUtils.BRIGHT_BLUE + "1." + ColorUtils.RESET + " Horror");
+                System.out.println(ColorUtils.BRIGHT_BLUE + "2." + ColorUtils.RESET + " Love Stories");
+                System.out.println(ColorUtils.BRIGHT_BLUE + "3." + ColorUtils.RESET + " Thriller");
+                System.out.println(ColorUtils.BRIGHT_BLUE + "4." + ColorUtils.RESET + " Educational");
+                System.out.println(ColorUtils.BRIGHT_BLUE + "5." + ColorUtils.RESET + " Cartoon");
 
+                System.out.print(ColorUtils.BRIGHT_YELLOW + "Enter Category: " + ColorUtils.RESET);
                 choice = sc.nextInt();
 
                 switch (choice) {
@@ -168,7 +169,7 @@ class BookRental {
                 returnDates.add(returnDateTime.format(formatter));
                 count++;
 
-                System.out.println("\n✔ Booked Successfully!");
+                System.out.println(ColorUtils.success("\n✔ Booked Successfully!"));
                 System.out.println("➡ Book Cost: Rs." + cost);
                 System.out.println("➡ Taken: " + takeDateTime.format(formatter));
                 System.out.println("➡ Return Date: " + returnDateTime.format(formatter));
@@ -209,7 +210,7 @@ class BookRental {
                     }
                     
                     booked[id] = false;
-                    System.out.println("Book Returned Successfully!");
+                    System.out.println(ColorUtils.success("Book Returned Successfully!"));
                 }
             }
 

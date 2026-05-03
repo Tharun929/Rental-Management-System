@@ -12,7 +12,11 @@ public class MainApp {
     }
 
     private void run() {
-        System.out.println("Welcome to the Rental Management System!");
+        System.out.println(ColorUtils.header("==========================================="));
+        System.out.println(ColorUtils.header("  |        RENTAL MANAGEMENT SYSTEM        |"));
+        System.out.println(ColorUtils.header("  =========================================="));
+        System.out.println(ColorUtils.success("Welcome to the Rental Management System!"));
+        System.out.println();
 
         while (!authenticateUser()) {
             // keep prompting until login succeeds
@@ -22,11 +26,11 @@ public class MainApp {
     }
 
     private boolean authenticateUser() {
-        System.out.println("\nPlease select an option:");
-        System.out.println("1. Register New User");
-        System.out.println("2. Login Existing User");
-        System.out.println("3. Exit");
-        System.out.print("Enter Choice: ");
+        System.out.println(ColorUtils.info("\nPlease select an option:"));
+        System.out.println(ColorUtils.BRIGHT_BLUE + "1." + ColorUtils.RESET + " Register New User");
+        System.out.println(ColorUtils.BRIGHT_BLUE + "2." + ColorUtils.RESET + " Login Existing User");
+        System.out.println(ColorUtils.BRIGHT_BLUE + "3." + ColorUtils.RESET + " Exit");
+        System.out.print(ColorUtils.BRIGHT_YELLOW + "Enter Choice: " + ColorUtils.RESET);
 
         int option = readInteger();
 
@@ -37,56 +41,56 @@ public class MainApp {
             case 2:
                 return loginUser();
             case 3:
-                System.out.println("Exiting System...");
+                System.out.println(ColorUtils.warning("Exiting System..."));
                 System.exit(0);
                 return false;
             default:
-                System.out.println("Invalid Choice. Please try again.");
+                System.out.println(ColorUtils.error("Invalid Choice. Please try again."));
                 return false;
         }
     }
 
     private void registerUser() {
-        System.out.print("Enter new username: ");
+        System.out.print(ColorUtils.BRIGHT_YELLOW + "Enter new username: " + ColorUtils.RESET);
         String username = sc.nextLine().trim();
 
         if (username.isEmpty()) {
-            System.out.println("Username cannot be empty.");
+            System.out.println(ColorUtils.error("Username cannot be empty."));
             return;
         }
 
         if (findUser(username) != null) {
-            System.out.println("Username already exists. Please login or choose a different username.");
+            System.out.println(ColorUtils.error("Username already exists. Please login or choose a different username."));
             return;
         }
 
-        System.out.print("Enter password: ");
+        System.out.print(ColorUtils.BRIGHT_YELLOW + "Enter password: " + ColorUtils.RESET);
         String password = sc.nextLine();
 
         users.add(new User(username, password));
-        System.out.println("Registration successful. Please login with your new account.");
+        System.out.println(ColorUtils.success("Registration successful. Please login with your new account."));
     }
 
     private boolean loginUser() {
-        System.out.print("Enter username: ");
+        System.out.print(ColorUtils.BRIGHT_YELLOW + "Enter username: " + ColorUtils.RESET);
         String username = sc.nextLine().trim();
         User user = findUser(username);
 
         if (user == null) {
-            System.out.println("User not found. Please register first.");
+            System.out.println(ColorUtils.error("User not found. Please register first."));
             return false;
         }
 
-        System.out.print("Enter password: ");
+        System.out.print(ColorUtils.BRIGHT_YELLOW + "Enter password: " + ColorUtils.RESET);
         String password = sc.nextLine();
 
         if (!user.checkPassword(password)) {
-            System.out.println("Incorrect password. Please try again.");
+            System.out.println(ColorUtils.error("Incorrect password. Please try again."));
             return false;
         }
 
         loggedInUser = user;
-        System.out.println("Login successful. Welcome, " + loggedInUser.getUsername() + "!");
+        System.out.println(ColorUtils.success("Login successful. Welcome, " + loggedInUser.getUsername() + "!"));
         return true;
     }
 
@@ -103,16 +107,16 @@ public class MainApp {
         int choice = 0;
 
         while (choice != 6) {
-            System.out.println("\n===== RENTAL SYSTEM =====");
-            System.out.println("Logged in as: " + loggedInUser.getUsername());
-            System.out.println("1. Books");
-            System.out.println("2. Vehicles");
-            System.out.println("3. Clothes");
-            System.out.println("4. Electronics");
-            System.out.println("5. Rooms");
-            System.out.println("6. Exit");
+            System.out.println(ColorUtils.header("\n===== RENTAL SYSTEM ====="));
+            System.out.println(ColorUtils.info("Logged in as: ") + ColorUtils.highlight(loggedInUser.getUsername()));
+            System.out.println(ColorUtils.BRIGHT_BLUE + "1." + ColorUtils.RESET + " Books");
+            System.out.println(ColorUtils.BRIGHT_BLUE + "2." + ColorUtils.RESET + " Vehicles");
+            System.out.println(ColorUtils.BRIGHT_BLUE + "3." + ColorUtils.RESET + " Clothes");
+            System.out.println(ColorUtils.BRIGHT_BLUE + "4." + ColorUtils.RESET + " Electronics");
+            System.out.println(ColorUtils.BRIGHT_BLUE + "5." + ColorUtils.RESET + " Rooms");
+            System.out.println(ColorUtils.BRIGHT_BLUE + "6." + ColorUtils.RESET + " Exit");
 
-            System.out.print("Enter Choice: ");
+            System.out.print(ColorUtils.BRIGHT_YELLOW + "Enter Choice: " + ColorUtils.RESET);
             choice = readInteger();
 
             switch (choice) {
@@ -132,10 +136,10 @@ public class MainApp {
                     new RoomsRental().start();
                     break;
                 case 6:
-                    System.out.println("Exiting System...");
+                    System.out.println(ColorUtils.warning("Exiting System..."));
                     break;
                 default:
-                    System.out.println("Invalid Choice");
+                    System.out.println(ColorUtils.error("Invalid Choice"));
             }
         }
     }
@@ -145,7 +149,7 @@ public class MainApp {
             try {
                 return Integer.parseInt(sc.nextLine().trim());
             } catch (NumberFormatException e) {
-                System.out.print("Invalid input. Please enter a number: ");
+                System.out.print(ColorUtils.error("Invalid input. Please enter a number: "));
             }
         }
     }
